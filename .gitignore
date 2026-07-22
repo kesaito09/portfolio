@@ -1,0 +1,9 @@
+# 内部作業ノート（評価・振り返り・ADR）— 公開しない
+docs/
+
+# macOS
+.DS_Store
+
+# エディタ
+.vscode/
+.idea/

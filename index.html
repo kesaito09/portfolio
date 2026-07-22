@@ -1,0 +1,200 @@
+<!doctype html>
+<html lang="ja">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Keisuke Saito（Kesaito）のポートフォリオ。42Tokyo での学習、サーバーサイド開発、データ分析・機械学習の実績をまとめています。">
+  <meta name="theme-color" content="#fbfbfa">
+  <title>Keisuke Saito — Portfolio</title>
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' fill='%23fbfbfa'/%3E%3Ctext x='15' y='23' font-family='Arial,sans-serif' font-size='22' font-weight='800' text-anchor='middle' fill='%2318222e'%3EK%3C/text%3E%3Ccircle cx='26' cy='23' r='2.4' fill='%23175cd3'/%3E%3C/svg%3E">
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Keisuke Saito — Portfolio">
+  <meta property="og:description" content="42Tokyo で学ぶソフトウェアエンジニア。サーバーサイド開発、データ分析・機械学習、低レイヤの実績。">
+  <meta property="og:locale" content="ja_JP">
+  <meta name="twitter:card" content="summary">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Manrope:wght@400;500;600;700;800&family=Noto+Sans+JP:wght@400;500;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --ink: #18222e;
+      --muted: #66717e;
+      --line: #dce1e7;
+      --paper: #fbfbfa;
+      --surface: #ffffff;
+      --blue: #175cd3;
+      --blue-light: #eff6ff;
+      --mono: "DM Mono", monospace;
+      --display: "Manrope", "Noto Sans JP", sans-serif;
+      --body: "Noto Sans JP", sans-serif;
+      --max: 980px;
+      --gutter: clamp(20px, 5vw, 48px);
+    }
+
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body { margin: 0; background: var(--paper); color: var(--ink); font: 15px/1.9 var(--body); -webkit-font-smoothing: antialiased; }
+    a { color: inherit; }
+    a:focus-visible { outline: 3px solid var(--blue); outline-offset: 3px; }
+    .wrap { width: min(100% - var(--gutter) * 2, var(--max)); margin-inline: auto; }
+    .skip-link { position: absolute; top: -80px; left: 12px; z-index: 10; padding: 7px 12px; background: var(--ink); color: #fff; }
+    .skip-link:focus { top: 12px; }
+    .eyebrow { margin: 0; color: var(--blue); font: 500 11px/1.3 var(--mono); letter-spacing: .1em; text-transform: uppercase; }
+    .section-title { margin: 6px 0 0; font: 800 clamp(26px, 4vw, 36px)/1.35 var(--display); letter-spacing: -.045em; }
+    section { padding: clamp(56px, 8vw, 88px) 0; }
+
+    .site-header { border-bottom: 1px solid var(--line); background: rgba(251, 251, 250, .92); position: sticky; top: 0; z-index: 2; backdrop-filter: blur(10px); }
+    .nav { min-height: 62px; display: flex; align-items: center; justify-content: space-between; gap: 24px; }
+    .brand { font: 800 16px/1 var(--display); letter-spacing: -.04em; text-decoration: none; }
+    .brand::after { content: "."; color: var(--blue); }
+    .nav-list { display: flex; gap: clamp(14px, 3vw, 28px); margin: 0; padding: 0; list-style: none; }
+    .nav-list a { color: var(--muted); font: 500 11px/1 var(--mono); text-decoration: none; }
+    .nav-list a:hover { color: var(--blue); }
+
+    .intro { padding: clamp(70px, 11vw, 120px) 0 clamp(54px, 8vw, 80px); }
+    .intro h1 { margin: 10px 0 18px; font: 800 clamp(42px, 7vw, 70px)/1.05 var(--display); letter-spacing: -.065em; }
+    .intro h1 span { display: block; margin-top: 12px; color: var(--blue); font: 500 clamp(15px, 2.2vw, 19px)/1.5 var(--mono); letter-spacing: -.03em; }
+    .intro-copy { max-width: 660px; margin: 0; color: var(--muted); font-size: 16px; }
+    .profile-links { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 30px; }
+    .profile-links a { display: inline-flex; align-items: center; gap: 10px; padding: 11px 16px; border: 1px solid var(--line); color: var(--ink); font: 500 11px/1 var(--mono); letter-spacing: .02em; text-decoration: none; transition: border-color .15s, color .15s; }
+    .profile-links a:hover { border-color: var(--blue); color: var(--blue); }
+    .profile-links span:last-child { color: var(--muted); }
+
+    .block { border-top: 1px solid var(--line); }
+    .section-head { display: grid; grid-template-columns: minmax(0, 1fr) 320px; gap: 32px; align-items: end; margin-bottom: 34px; }
+    .section-head > p { margin: 0; color: var(--muted); font-size: 14px; }
+
+    .skills { display: grid; grid-template-columns: repeat(2, 1fr); border-top: 1px solid var(--line); border-left: 1px solid var(--line); }
+    .skill-group { padding: 24px 28px 28px; border-right: 1px solid var(--line); border-bottom: 1px solid var(--line); background: var(--surface); }
+    .skill-group h3 { margin: 0 0 12px; font: 700 17px/1.5 var(--display); letter-spacing: -.03em; }
+    .skill-group p { margin: 0; color: var(--muted); font-size: 13px; line-height: 1.8; }
+    .tags { display: flex; flex-wrap: wrap; gap: 7px; margin: 16px 0 0; padding: 0; list-style: none; }
+    .tags li { padding: 3px 7px; border: 1px solid var(--line); color: var(--muted); font: 400 11px/1.45 var(--mono); }
+
+    .work-list { border-top: 1px solid var(--line); }
+    .work { display: grid; grid-template-columns: 150px minmax(0, 1fr); gap: 30px; padding: clamp(28px, 5vw, 48px) 0; border-bottom: 1px solid var(--line); }
+    .work-date { color: var(--muted); font: 400 11px/1.7 var(--mono); letter-spacing: .04em; }
+    .work-date span { display: block; margin-top: 8px; color: var(--blue); }
+    .work h3 { margin: 0 0 13px; font: 700 clamp(21px, 3vw, 29px)/1.4 var(--display); letter-spacing: -.045em; }
+    .project-link { display: inline-block; margin: -4px 0 16px; color: var(--blue); font: 500 11px/1.5 var(--mono); text-decoration: none; }
+    .project-link:hover { text-decoration: underline; text-underline-offset: 4px; }
+    .work > div > p { max-width: 700px; margin: 0; color: var(--muted); }
+    .work strong { color: var(--ink); }
+    .work-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 14px 28px; margin-top: 20px; padding-top: 18px; border-top: 1px solid var(--line); }
+    .work-grid dt { margin-bottom: 4px; color: var(--muted); font: 500 10px/1.4 var(--mono); letter-spacing: .08em; text-transform: uppercase; }
+    .work-grid dd { margin: 0; font-size: 13px; line-height: 1.75; }
+    .work-figure { margin: 18px 0 4px; }
+    .work-figure a { display: block; }
+    .work-figure img { display: block; width: 100%; max-width: 660px; height: auto; border: 1px solid var(--line); background: var(--surface); }
+    .work-figure figcaption { margin-top: 9px; color: var(--muted); font: 400 11px/1.6 var(--mono); letter-spacing: .02em; }
+
+    .history { display: grid; grid-template-columns: 130px 1fr; margin: 0; border-top: 1px solid var(--line); }
+    .history dt, .history dd { margin: 0; padding: 20px 0; border-bottom: 1px solid var(--line); }
+    .history dt { color: var(--muted); font: 400 11px/1.8 var(--mono); }
+    .history dd { padding-left: 28px; }
+    .history strong { display: block; margin-bottom: 2px; font: 700 16px/1.55 var(--display); letter-spacing: -.025em; }
+    .history span { color: var(--muted); font-size: 13px; }
+
+    .github { background: var(--blue-light); }
+    .github-inner { display: flex; align-items: center; justify-content: space-between; gap: 32px; }
+    .github p { margin: 12px 0 0; color: var(--muted); font-size: 14px; }
+    .github a { flex: 0 0 auto; padding: 12px 16px; border: 1px solid var(--blue); color: var(--blue); font: 500 11px/1 var(--mono); text-decoration: none; }
+    .github a:hover { background: var(--blue); color: #fff; }
+    footer { padding: 26px 0 34px; color: var(--muted); font: 400 10px/1.5 var(--mono); letter-spacing: .06em; }
+
+    @media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }
+    @media (max-width: 650px) {
+      .section-head { grid-template-columns: 1fr; gap: 24px; }
+      .skills { grid-template-columns: 1fr; }
+      .work { grid-template-columns: 1fr; gap: 10px; }
+      .work-grid { grid-template-columns: 1fr; }
+      .github-inner { align-items: flex-start; flex-direction: column; }
+    }
+  </style>
+</head>
+<body>
+  <a class="skip-link" href="#main">本文へ移動</a>
+  <header class="site-header">
+    <nav class="nav wrap" aria-label="メインナビゲーション">
+      <a class="brand" href="#top" aria-label="ページの先頭へ">Kesaito</a>
+      <ul class="nav-list">
+        <li><a href="#skills">SKILLS</a></li>
+        <li><a href="#work">WORK</a></li>
+        <li><a href="#history">HISTORY</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main id="main">
+    <section class="intro wrap" id="top" aria-labelledby="name">
+      <p class="eyebrow">Portfolio / 2026</p>
+      <h1 id="name">Keisuke Saito<span>Software Engineer · 42Tokyo</span></h1>
+      <p class="intro-copy">2025年にプログラミングを始め、現在は 42Tokyo で C / C++ を中心に学んでいます。サーバーサイド開発、データ分析・機械学習、低レイヤの課題に取り組んできました。</p>
+      <div class="profile-links" aria-label="外部リンク・連絡先">
+        <a href="https://github.com/kesaito09" target="_blank" rel="noreferrer"><span>GITHUB</span><span>↗</span></a>
+        <a href="mailto:kesaito.42tokyo@gmail.com"><span>EMAIL</span><span>↗</span></a>
+      </div>
+    </section>
+
+    <div class="block">
+      <section class="wrap" id="skills" aria-labelledby="skills-title">
+        <div class="section-head">
+          <div><p class="eyebrow">Skills</p><h2 class="section-title" id="skills-title">スキル</h2></div>
+          <p>現在扱っている技術・学習している領域です。</p>
+        </div>
+        <div class="skills">
+          <article class="skill-group"><h3>Backend / API</h3><p>データを取得・加工し、API として配信するサーバーサイドの実装。</p><ul class="tags"><li>Python</li><li>FastAPI</li><li>PostgreSQL</li><li>AWS S3</li><li>RDS</li></ul></article>
+          <article class="skill-group"><h3>Data / Machine Learning</h3><p>構造化データの予測、評価設計、再現可能な実験環境の構築。</p><ul class="tags"><li>pandas</li><li>scikit-learn</li><li>XGBoost</li><li>LightGBM</li><li>cross-validation</li></ul></article>
+          <article class="skill-group"><h3>Systems Programming</h3><p>プロセス、パイプ、スレッド、排他制御などを C で実装しながら学習。</p><ul class="tags"><li>C</li><li>Unix</li><li>process control</li><li>pthread</li><li>parsing</li></ul></article>
+          <article class="skill-group"><h3>C++ / Foundations</h3><p>所有権、クラス設計、演算子オーバーロード、数値表現を題材に基礎を学習。</p><ul class="tags"><li>C++</li><li>OOP</li><li>RAII</li><li>fixed point</li><li>IEEE 754</li></ul></article>
+          <article class="skill-group"><h3>RAG / Agent Development</h3><p>社内ナレッジを参照する RAG と、調査・実行・評価を進める AI エージェントの設計・開発。</p><ul class="tags"><li>RAG</li><li>LLM</li><li>knowledge retrieval</li><li>AI agents</li><li>evaluation</li></ul></article>
+        </div>
+      </section>
+    </div>
+
+    <div class="block">
+      <section class="wrap" id="work" aria-labelledby="work-title">
+        <div class="section-head">
+          <div><p class="eyebrow">Selected work</p><h2 class="section-title" id="work-title">実績・プロジェクト</h2></div>
+          <p>公開可能な範囲で、担当内容と使った技術を記載しています。</p>
+        </div>
+        <div class="work-list">
+          <article class="work">
+            <div class="work-date">2025.12 – 2026.02<span>INTERNSHIP</span></div>
+            <div><h3>気象データ配信 API の設計・実装</h3><p>デジタルグリッド株式会社のサーバーサイド開発インターンとして、電力取引プラットフォーム向けの気象データ API を実装しました。<strong>データ形式の解析とパーサーの改良を一人で担当</strong>し、気象庁の GRIB2 仕様書と実際のバイナリファイルを読み解きながら、データがどの順序と形式で格納されているかを確認しました。</p><p>その過程で、公開ライブラリのパーサーでは扱えない<strong>気象庁独自の仕様</strong>が含まれることを発見しました。仕様書とライブラリ側の実装を照合し、不一致の箇所を特定したうえで、独自仕様を読めるようにパーサーを改良。取得した気象データを API として配信するところまで実装しました。</p><p>未知の気象データ形式に対しても、42Tokyo の minishell で培った「仕様書を読み、実装と照らし合わせる」進め方を応用しました。ドメイン知識がない状態から、仕様理解・原因特定・実装まで一貫して進めた経験です。</p><dl class="work-grid"><div><dt>仕様の読み解き</dt><dd>気象庁の GRIB2 仕様書と実バイナリを照合し、データ形式を解析</dd></div><div><dt>問題の特定</dt><dd>公開ライブラリが対応していない独自仕様を発見し、差分を特定</dd></div><div><dt>実装</dt><dd>独自仕様に対応するようパーサーを改良し、気象データ API を構築</dd></div><div><dt>Tech</dt><dd>Python / FastAPI / PostgreSQL (RDS) / AWS S3 / GRIB2</dd></div></dl></div>
+          </article>
+          <article class="work">
+            <div class="work-date">2026.07<span>GCI Summer</span></div>
+            <div><h3>マーケティング反応予測コンペ — 5,000人中 3位</h3><a class="project-link" href="https://github.com/kesaito09/ml-experiment-harness" target="_blank" rel="noreferrer">GITHUB: KESAITO09/ML-EXPERIMENT-HARNESS ↗</a><figure class="work-figure"><a href="assets/gci2026_leaderboard.png" target="_blank" rel="noreferrer"><img src="assets/gci2026_leaderboard.png" alt="GCI 2026 Summer コンペの最終リーダーボード。3位に kesaitou（スコア 0.92309）。上位者のアカウント名は伏せています。" loading="lazy"></a><figcaption>GCI 2026 Summer 最終リーダーボード — 3位 / kesaitou（他参加者のアカウント名は伏せています）</figcaption></figure><p>AI に改善ループを回させるために、データの分析から「スコアが本当に改善したか」の判定までを行う<strong>評価ハーネス</strong>を構築しました。特徴量、モデル、Optuna で得たパラメータ、検証方法は YAML で管理し、同じ設定からいつでも実験を再現できるようにした。</p><p>ドメインを踏まえた仮説づくりは人間が担当しました。一方で、Kaggle の上位者の手法、類似コンペのアプローチ、最新論文など<strong>LLMの学習時点にない外部情報</strong>は、複数の AI エージェントに並列で Deep Research させました。</p><p>得られた知見を入力として、AI が特徴量・モデル・パラメータを提案し、実験・評価・記録までを閉ループで実行します。<strong>提案 → 実行 → 評価 → 次の提案</strong>を自律的に回し、人間はドメイン仮説の起点と最終判断に集中できる仕組みにしました。</p><p>採否は公開リーダーボードの順位ではなく、重複データによる見かけの改善を避ける group-CV のスコアで判断しました。これにより、一時的に高く見える手法を除外しながら、改善を積み上げました。</p><dl class="work-grid"><div><dt>人間の役割</dt><dd>ドメイン知識が必要な仮説を立て、探索の方向を決定</dd></div><div><dt>AIエージェント</dt><dd>Kaggle・類似コンペ・最新論文を並列で Deep Research</dd></div><div><dt>評価ハーネス</dt><dd>AIの実験結果を検証し、スコアが改善したかを一貫した基準で判定</dd></div><div><dt>自律検証ループ</dt><dd>入力された知見から、提案・実行・評価・記録を閉ループで実行</dd></div></dl></div>
+          </article>
+          <article class="work">
+            <div class="work-date">2026.07<span>PEOPLE ANALYTICS / POC</span></div>
+            <div><h3>離職リスクの予測を、効果的な面談につなげる PoC</h3><p>既存の離職予測サービスが出す「離職リスクの高さ」だけでは、面談で何を確かめるべきかまでは分かりません。そこでこの PoC では、離職しそうな人を予測するだけでなく、<strong>その人の予測を押し上げた主な要因を順位付きで示す面談カード</strong>を作成しました。</p><p>面談カードには、働き方・業務量・上司やチームとの関係を先に確認するか、役割期待・成長機会・評価・報酬への納得感を先に確認するかを記載します。モデルの結果を離職理由の断定には使わず、<strong>本人との対話で確かめるべき論点を絞るための補助情報</strong>として扱います。</p><p>さらに、社員ごとの「離職しやすさ」と採用・育成コストを掛け合わせ、面談の優先順位も決定します。限られた面談枠を適切に配分することで、<strong>試算で約8,000万円の損失削減余地がある対象</strong>へ優先的にフォローを集中する PoC です。</p><dl class="work-grid"><div><dt>面談カード</dt><dd>個人ごとに、離職リスクを押し上げた主な要因を順位付きで表示</dd></div><div><dt>面談の進め方</dt><dd>職場の状況と、キャリア・処遇のどちらを先に確認するかを提示</dd></div><div><dt>面談の優先順位</dt><dd>予測した離職リスクと採用・育成コストを組み合わせて決定</dd></div><div><dt>注意点</dt><dd>モデルは離職理由を断定せず、本人との対話で確かめるための補助情報</dd></div></dl></div>
+          </article>
+        </div>
+      </section>
+    </div>
+
+    <div class="block">
+      <section class="wrap" id="history" aria-labelledby="history-title">
+        <div class="section-head">
+          <div><p class="eyebrow">History</p><h2 class="section-title" id="history-title">経歴・学習</h2></div>
+          <p>42Tokyo での学習と、開発・データ分析の活動。</p>
+        </div>
+        <dl class="history">
+          <dt>2025.09</dt><dd><strong>42Tokyo Piscine でプログラミングを開始</strong><span>C 言語とソフトウェア開発を学び始める。</span></dd>
+          <dt>2025.10</dt><dd><strong>42Tokyo 入学</strong><span>C / C++ による低レイヤ課題に取り組む。</span></dd>
+          <dt>2025.12 – 2026.02</dt><dd><strong>デジタルグリッド株式会社 — サーバーサイド開発インターン</strong><span>気象データ配信 API を設計・実装（2ヶ月）。</span></dd>
+          <dt>2026.07</dt><dd><strong>GCI 2026 Summer — 5,000人中 3位</strong><span>東京大学松尾研究室主催のデータ分析コンペティション。</span></dd>
+          <dt>NOW</dt><dd><strong>フリーランスエンジニア</strong><span>問い合わせ対応チャットボットの開発に従事。</span></dd>
+        </dl>
+      </section>
+    </div>
+
+    <section class="github">
+      <div class="github-inner wrap"><div><p class="eyebrow">Links</p><h2 class="section-title">GitHub</h2><p>公開しているコードと学習記録。</p></div><a href="https://github.com/kesaito09" target="_blank" rel="noreferrer">GITHUB.COM/KESAITO09 ↗</a></div>
+    </section>
+  </main>
+  <footer class="wrap">© 2026 KESAITO</footer>
+</body>
+</html>
